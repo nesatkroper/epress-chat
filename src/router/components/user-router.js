@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateJWT = require("@/middleware/auth.middleware");
+const authenticateJWT = require("@/middleware/auth-middleware");
 
 const {
   select,
@@ -8,7 +8,7 @@ const {
   create,
   update,
   destroy,
-} = require("@/controllers/users.controller");
+} = require("@/controllers/users-controller");
 
 router.get("/", authenticateJWT, select);
 router.get("/:id", authenticateJWT, selectById);

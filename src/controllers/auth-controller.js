@@ -9,7 +9,7 @@ const generateToken = (user) => {
   return jwt.sign(
     { userId: user.id, role: user.role.name },
     process.env.JWT_SECRET,
-    { expiresIn: "1h" }
+    { expiresIn: "24h" }
   );
 };
 
@@ -69,6 +69,10 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!email) {
+      return res.status(400).json({ error: "Email is required." });
+    }
+
     // ! Find user by email
     const user = await prismaClient.user.findUnique({
       where: { email },

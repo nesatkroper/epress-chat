@@ -66,6 +66,7 @@ const destroy = async (req, res) => {
     });
     res.status(200).json({ message: "User deleted successfully" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "Failed to delete user" });
   }
 };
