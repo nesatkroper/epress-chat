@@ -28,3 +28,10 @@ model User {
   role      Role     @relation(fields: [roleId], references: [id])
   createdAt DateTime @default(now())
 }
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  title       String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+}

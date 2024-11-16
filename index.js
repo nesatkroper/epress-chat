@@ -3,8 +3,6 @@ require("module-alias/register");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const multer = require("multer");
-const path = require("path");
 const router = require("@/router/index");
 
 const app = express();

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { send, verify } = require("@/controllers/gmail-otp-controller");
+const { send, verify } = require("@/services/gmail-otp-service");
 
-router.post("/gmail-send", send);
-router.post("/gmail-verify", verify);
+router.post("/send", send);
+router.post("/verify", verify);
 
 module.exports = router;
