@@ -1,6 +1,5 @@
-const multer = require("multer");
-const path = require("path");
 const prisma = require("@/config/client");
+const sharp = require("sharp");
 
 // ! Get all posts
 const select = async (req, res) => {
@@ -16,11 +15,11 @@ const select = async (req, res) => {
 // ! Create a new post
 const create = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title } = req.body;
+
     const newPost = await prisma.post.create({
       data: {
         title,
-        description,
         imageUrl: req.file ? req.file.path : null,
       },
     });
@@ -35,7 +34,7 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { title } = req.body;
 
     const updateData = { title, description };
     if (req.file) {
